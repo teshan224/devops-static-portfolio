@@ -2,12 +2,21 @@ version: 0.2
 
 phases:
   install:
+    runtime-versions:
+      nodejs: 18
     commands:
-      - echo Installing...
+      - echo "Install phase complete"
+
   build:
     commands:
-      - echo Build started on `date`
+      - echo "No build necessary for static site"
+
+  post_build:
+    commands:
+      - echo "Starting deploy to S3..."
+      - aws s3 cp dist/ s3://YOUR_BUCKET_NAME/ --recursive
+      - echo "Deploy complete"
+
 artifacts:
   files:
     - '**/*'
-  base-directory: . # Build output will be uploaded from this folder
