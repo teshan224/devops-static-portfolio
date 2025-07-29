@@ -14,7 +14,7 @@ phases:
   post_build:
     commands:
       - echo "Starting deploy to S3..."
-      - aws s3 cp dist/ s3://YOUR_BUCKET_NAME/ --recursive
+      - aws s3 cp dist/ s3://chamidu-portfolio-site/ --recursive
       - echo "Deploy complete"
 
 artifacts:
